@@ -1,0 +1,32 @@
+Iniciar zookeeper
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+Iniciar kafka
+bin\windows\kafka-server-start.bat config\server.properties
+
+Crear Topic kafka
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic devs4j-topic -partitions 5 --replication-factor 1
+
+Modifiar Topic Kafka
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --alter --topic devs4j-topic -partitions 40  
+
+Eliminar Topic
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --delete --topic devs4j-topic
+
+Listar Topics
+bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+Describe Topics
+bin\windows\kafka-topics.bat --describe --topic devs4j-topic --bootstrap-server localhost:9092
+
+Crear un consumer
+bin\windows\kafka-console-consumer.bat --topic devs4j-topic --bootstrap-server localhost:9092
+bin\windows\kafka-console-consumer.bat --topic devs4j-topic --from-beginning --bootstrap-server localhost:9092
+bin\windows\kafka-console-consumer.bat --topic devs4j-topic --from-beginning --bootstrap-server localhost:9092 --property print.key=true --property key.separator="-"
+ 
+
+Crear un producer
+bin\windows\kafka-console-producer.bat --topic devs4j-topic --bootstrap-server localhost:9092
+
+Para limpiar el ambiente
+rmdir /s /q \tmp\kafka-logs \tmp\zookeeper
