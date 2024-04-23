@@ -5,7 +5,8 @@ Iniciar kafka
 bin\windows\kafka-server-start.bat config\server.properties
 
 Crear Topic kafka
-bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic devs4j-topic -partitions 5 --replication-factor 1
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic devs4j-topic --partitions 5 --replication-factor 1
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic devs4j-transactions --partitions 50 --replication-factor 4
 
 Modifiar Topic Kafka
 bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --alter --topic devs4j-topic -partitions 40  
@@ -23,6 +24,7 @@ Crear un consumer
 bin\windows\kafka-console-consumer.bat --topic devs4j-topic --bootstrap-server localhost:9092
 bin\windows\kafka-console-consumer.bat --topic devs4j-topic --from-beginning --bootstrap-server localhost:9092
 bin\windows\kafka-console-consumer.bat --topic devs4j-topic --from-beginning --bootstrap-server localhost:9092 --property print.key=true --property key.separator="-"
+bin\windows\kafka-console-consumer.bat --topic devs4j-topic --bootstrap-server localhost:9092 --property print.key=true --property key.separator="-"
  
 
 Crear un producer
